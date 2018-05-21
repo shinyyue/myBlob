@@ -7,6 +7,10 @@ categories:
 
 git的常用操作：
 
+使用git也很长时间了，一直都是用sourcetree工具辅助。最近有时间就想学习一下直接使用命令行来进行操作，提升一下。
+
+<!-- more -->
+
 ```bash
 1. 初始化本地仓库 
 $ git init 
@@ -16,10 +20,7 @@ $ git add .
 
 3. 将修改后的文件提交到本地仓库
 $ git commit -m "提交说明"
-```
 
-<!-- more -->
-```bash
 4. 连接到远程仓库，创建origin分支
 $ git remote add origin "https://github.com/shinyyue/shinyyue.github.io.git"
 
