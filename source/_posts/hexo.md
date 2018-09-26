@@ -118,11 +118,11 @@ $ hexo d
 在主题配置文件下开放gitment评论设置。
 ```
 
-![创建oAuthApp1](/img/create-oAuthApp.jpeg)
+![创建oAuthApp1](/images/create-oAuthApp.jpeg)
 
-![创建oAuthApp2](/img/create-oAuth-info.jpeg)
+![创建oAuthApp2](/images/create-oAuth-info.jpeg)
 
-![开放gitment评论设置](/img/set-gitment-open.jpeg)
+![开放gitment评论设置](/images/gitment.jpeg)
 
 ## 添加访问量统计
 
