@@ -16,6 +16,8 @@ categories:
 
 1.主题配置：整体颜色温和，代码高亮色明显而不刺眼。
 
+<!-- more -->
+
 ```
 "workbench.colorTheme": "One Dark Pro"
 ```
