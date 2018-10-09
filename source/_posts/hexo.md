@@ -130,7 +130,8 @@ $ hexo d
 
 引入js文件：
 ```bash
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 ```
 
 在需要添加统计功能的位置添加下面代码：
