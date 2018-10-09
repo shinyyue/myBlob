@@ -8,7 +8,7 @@ categories:
 
 ### 应用下载
 
-1.!(vscode官网下载)[https://code.visualstudio.com/]
+1.[vscode官网下载](https://code.visualstudio.com/)
 
 2.下载中文语言包扩展。在扩展商店中搜索[Chinese (Simplified) Language Pack for Visual Studio Code]
 
