@@ -3,7 +3,7 @@ title: vscode开发vue的基本配置
 ? date
 tags: vscode
 categories:
-  - 前端
+  - 工具
 ---
 
 ### 应用下载

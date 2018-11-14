@@ -1,45 +1,42 @@
 ---
 title: 百度富文本编辑器ueditor在vue中的使用指南
-date: 
+? date
 tags: ueditor
-categories: 
-- 前端
+categories:
+    - 前端
 ---
 
-**本文主要讲的是在vue搭建的后台管理系统项目中如何使用ueditor，以及在使用过程中遇到的问题和解决方案。主要从以下几个方面：**
+** 本文主要讲  的是在 vue 搭建的后台  管理系统项目中如何使用 ueditor，以及在使用过程中  遇到的问题和解决方案。主要从以下几个方面：**
 
-> 1.引用步骤
-> 2.封装vue ueditor的步骤
-> 3.ueditor单张图片上传到的服务器地址不能跨域，所以只能修改源码来实现上传图片到阿里云服务器。
-> 4.过程中遇到的问题
-> 5.缺点／优点总结
+> 1.引用步骤 2.封装 vue ueditor 的步骤
+> 3.ueditor 单张图片上传到的服务器地址不能跨域，所以只能修改源码来实现上传图片到阿里云服务器。 4.过程中遇到的问题 5.缺点／优点总结
 
 <!-- more -->
 <br>
 
-###  一. [ueditor官网](https://ueditor.baidu.com/website/index.html)下载ueditor源码。
+### 一. [ueditor 官网](https://ueditor.baidu.com/website/index.html)下载 ueditor 源码。
 
-由于后端开发使用的是php，所以使用的是1.4.3.3的php开发版本。
+由于后端开发使用的是 php，所以使用的是 1.4.3.3 的 php 开发版本。
 
 1.将源码放入前端项目中。
 
-![项目目录图片](/images/ueditor_01.jpg)
+<img src="/images/ueditor_01.jpg" width="400px" alt="项目目录图片">
 
-2.源码中php文件夹（后端配置部分）由后端开发按需修改后放到服务器上。
+2.源码中 php 文件夹（后端配置部分）由后端开发按需修改后放到服务器上。
 
-3.前端项目中修改ueditor.config.js中涉及到路径的配置的部分。
+3.前端项目中修改 ueditor.config.js 中涉及到路径的配置的部分。
 
-![路径配置部分的修改](/images/ueditor_config.jpg)
+<img src="/images/ueditor_config.jpg" width="400px" alt="路径配置部分的修改">
 
-> 注：UEDITOR_HOME_URL为前端项目中源码的路径；serverUrl为服务端ueditor配置项部分源码的路径。
+> 注：UEDITOR_HOME_URL 为前端项目中源码的路径；serverUrl 为服务端 ueditor 配置项部分源码的路径。
 
 <!-- **注：UEDITOR_HOME_URL为前端项目中源码的路径；serverUrl为服务端ueditor配置项部分源码的路径。** -->
 
 <br>
 
-### 二. 将ueditor封装为vue组件
+### 二. 将 ueditor 封装为 vue 组件
 
-1.ueditor组件 —— ueditor.vue代码
+1.ueditor 组件 —— ueditor.vue 代码
 
 ```
 <template>
@@ -118,6 +115,7 @@ export default {
 <style lang="less">
 </style>
 ```
+
 <br>
 2.父组件引用代码
 
@@ -191,9 +189,9 @@ export default {
 
 <br>
 
-### 三. ueditor单张上传图片到阿里云服务器
+### 三. ueditor 单张上传图片到阿里云服务器
 
-找到ueditor.all.js的源码中以下三行代码并注释掉：
+找到 ueditor.all.js 的源码中以下三行代码并注释掉：
 
 ```
 domUtils.on(iframe, 'load', callback);
@@ -201,35 +199,26 @@ form.action = utils.formatUrl(imageActionUrl + (imageActionUrl.indexOf('?') == -
 form.submit();
 ```
 
-添加通过ajax调用将图片上传到阿里云服务器的接口：
+添加通过 ajax 调用将图片上传到阿里云服务器的接口：
 
-![修改simpleupload上传图片](/images/ueditor_simpleupload.png)
+<img src="/images/ueditor_simpleupload.jpg" width="400px" alt="修改simpleupload上传图片">
 
 ### 四. 问题
 
-1.单张图片上传时，上传接口返回成功，但是ueditor提示上传错误。原因在官方文档上已有说明：
+1.单张图片上传时，上传接口返回成功，但是 ueditor 提示上传错误。原因在官方文档上已有说明：
 
-![单张上传关于跨域的官方说明](/images/ueditor_simpleupload_remark.png)
+<img src="/images/ueditor_simpleupload_remark.png" width="400px" alt="单张上传关于跨域的官方说明">
 
-本文使用的方法参考第三条提到的直接修改ueditor.all.js的源码。
+本文使用的方法参考第三条提到的直接修改 ueditor.all.js 的源码。
 
-2.**图片上传成功之后**，虽然编辑器能成功插入图片，但是ueditor监听的值不会立刻改变，即 **不能立刻触发contentchange**。操作上可以解决的办法是再点击一下图片，这时才会触发contentchange事件。暂时没有时间看源码解决这个问题，只能先通过手动点击图片触发contentchange的笨办法解决。
+2.**图片上传成功之后**，虽然编辑器能成功插入图片，但是 ueditor 监听的值不会立刻改变，即 **不能立刻触发 contentchange**。操作上可以解决的办法是再点击一下图片，这时才会触发 contentchange 事件。暂时没有时间看源码解决这个问题，只能先通过手动点击图片触发 contentchange 的笨办法解决。
 
-3.设置iframe固定高度并且overflow: auto时，内容可滚动，此时点击图片，**图片的选中区域位置会发生偏移**，导致不能通过拖拽边框来伸缩图片，这种情况仅仅在内容超出设定iframe高度时出现。代码层面暂时没研究解决办法，手动操作方面的解决办法是使用悬浮工具框来实现图片的尺寸等的修改。
+3.设置 iframe 固定高度并且 overflow: auto 时，内容可滚动，此时点击图片，**图片的选中区域位置会发生偏移**，导致不能通过拖拽边框来伸缩图片，这种情况仅仅在内容超出设定 iframe 高度时出现。代码层面暂时没研究解决办法，手动操作方面的解决办法是使用悬浮工具框来实现图片的尺寸等的修改。
 
-![修改图片尺寸](/images/ueditor_edit_img.png)
+<img src="/images/ueditor_edit_img.png" width="400px" alt="修改图片尺寸">
 
-4.ueditor.config.js中serverUrl配置出现问题时，会报错 **后台配置项返回格式出错，上传功能将不能正常使用！** 解决办法就是仔细检查serverurl的路径是否正确。
+4.ueditor.config.js 中 serverUrl 配置出现问题时，会报错 **后台配置项返回格式出错，上传功能将不能正常使用！** 解决办法就是仔细检查 serverurl 的路径是否正确。
 
 5.有时候上传图片不能触发上传的接口。（复现频率比较低，暂时没找到原因）
 
 > 以上描述若有任何错误或不当，请在评论里告知，非常感谢～
-
-
-
-
-
-
-
-
-
