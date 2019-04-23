@@ -5,7 +5,7 @@ categories:
     - 工具
 ---
 
-## If you have set any proxy, try removing that using this:
+## If you have set any proxy, try removing that using:
 
 ```bash
 npm config rm proxy
