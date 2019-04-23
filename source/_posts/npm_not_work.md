@@ -1,11 +1,11 @@
 ---
 title: 'npm not work, rollbackFailedOptional: verb npm-session xxxxxxxxxxxxxxxxxx'
 tags: npm
-categories: 
-- 工具
+categories:
+    - 工具
 ---
 
-## If you have set any proxy, try removing that using:
+## If you have set any proxy, try removing that using this:
 
 ```bash
 npm config rm proxy
